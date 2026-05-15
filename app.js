@@ -1,31 +1,22 @@
 import React, { useEffect, useState } from "react";
 
-function App() {
+function Counter() {
 
-  const [users, setUsers] = useState([]);
+  const [count, setCount] = useState(0);
 
   useEffect(() => {
-
-    fetch("https://jsonplaceholder.typicode.com/users")
-      .then(res => res.json())
-      .then(data => {
-        console.log(data);
-        setUsers(data);
-      });
-
+    console.log("Count changed");
   }, []);
 
   return (
     <div>
-      <h1>User List</h1>
+      <p>{count}</p>
 
-      {users.map((user, index) => (
-        <div key={index}>
-          {user.name}
-        </div>
-      ))}
+      <button onClick={() => setCount(count + 1)}>
+        Increment
+      </button>
     </div>
   );
 }
 
-export default App;
+export default Counter;
